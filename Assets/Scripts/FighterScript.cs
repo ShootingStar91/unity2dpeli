@@ -48,6 +48,12 @@ public class FighterScript : MonoBehaviour
                     Attacking = false;
                 }
             }
+            if (Input.GetButtonDown("Fire3")) {
+                Block();
+            }
+            if (Input.GetButtonUp("Fire3")) {
+                BlockEnd();
+            }
         }
     }
 
@@ -58,6 +64,17 @@ public class FighterScript : MonoBehaviour
         } else {
             Animator.SetTrigger("Punch2");
         }
+    }
+
+    void Block() {
+        Animator.SetTrigger("Block");
+        Animator.SetBool("Blocking", true);
+        BlockCheck = true;
+    }
+    
+    void BlockEnd() {
+        Animator.SetBool("Blocking", false);
+        BlockCheck = false;
     }
 
     void Kick() {
